@@ -447,6 +447,34 @@ static int __metadata_extractor_get_audio_samplerate(metadata_extractor_s *metad
 	return ret;
 }
 
+static int __metadata_extractor_get_audio_bitpersample(metadata_extractor_s *metadata, int *bitpersample)
+{
+	int ret = METADATA_EXTRACTOR_ERROR_NONE;
+	char *err_attr_name = NULL;
+	int _audio_bit_per_sample = 0;
+
+	if((!metadata) ||(!metadata->attr_h))
+	{
+		metadata_extractor_error("INVALID_PARAMETER(0x%08x)", METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER);
+		return METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER;
+	}
+
+	if(metadata->audio_track_cnt > 0)
+	{
+		ret = mm_file_get_attrs(metadata->attr_h, &err_attr_name, MM_FILE_CONTENT_AUDIO_BITPERSAMPLE, &_audio_bit_per_sample, NULL);
+		if(ret != MM_ERROR_NONE)
+		{
+			metadata_extractor_error("METADATA_EXTRACTOR_ERROR_OPERATION_FAILED(0x%08x)", ret);
+			SAFE_FREE(err_attr_name);
+			return METADATA_EXTRACTOR_ERROR_OPERATION_FAILED;
+		}
+	}
+
+	*bitpersample = _audio_bit_per_sample;
+
+	return ret;
+}
+
 static int __metadata_extractor_get_audio_track_count(metadata_extractor_s *metadata, int *track_cnt)
 {
 	int ret = METADATA_EXTRACTOR_ERROR_NONE;
@@ -1377,6 +1405,12 @@ int metadata_extractor_get_metadata(metadata_extractor_h metadata, metadata_extr
 			ret = __metadata_extractor_get_audio_samplerate(_metadata, &i_value);
 			break;
 		}
+		case METADATA_AUDIO_BITPERSAMPLE:
+		{
+			is_string = 0;
+			ret = __metadata_extractor_get_audio_bitpersample(_metadata, &i_value);
+			break;
+		}
 		case METADATA_HAS_AUDIO:
 		{
 			is_string = 0;
@@ -1636,7 +1670,7 @@ int metadata_extractor_get_frame(metadata_extractor_h metadata, void **frame, in
 		return METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER;
 	}
 
-	ret = __metadata_extractor_check_and_extract_meta(_metadata, METADATA_TYPE_TAG);
+	ret = __metadata_extractor_check_and_extract_meta(_metadata, METADATA_TYPE_ATTR);
 	if(ret != METADATA_EXTRACTOR_ERROR_NONE)
 	{
 		return ret;
