@@ -39,11 +39,11 @@ extern "C" {
 
 /**
  * @brief Creates metadata.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  * @remarks You must release @a metadata using metadata_extractor_destroy().
  *
  * @param[in] metadata The handle to metadata
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -55,10 +55,10 @@ int metadata_extractor_create(metadata_extractor_h *metadata);
 
 /**
  * @brief Sets the file path to extract.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  * @param [in] metadata The handle to metadata
  * @param [in] path The path to extract metadata
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -73,11 +73,11 @@ int metadata_extractor_set_path(metadata_extractor_h metadata, const char *path)
 
 /**
  * @brief Sets the buffer to extract.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  * @param [in] metadata The handle to metadata
  * @param [in] buffer The buffer to extract metadata
  * @param [in] size The buffer size
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -91,9 +91,9 @@ int metadata_extractor_set_buffer(metadata_extractor_h metadata, const void *buf
 
 /**
  * @brief Destroys metadata.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  * @param [in] metadata The handle to metadata
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -106,7 +106,7 @@ int metadata_extractor_destroy(metadata_extractor_h metadata);
 
 /**
  * @brief Gets metadata.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  *
  * @remarks You must release @a value using @c free(). \n
  *                   In case of accessing specific path in internal storage or external storage, you may add the privilege for accessing the path. \n
@@ -115,7 +115,7 @@ int metadata_extractor_destroy(metadata_extractor_h metadata);
  * @param[in] metadata The handle to metadata
  * @param[in] attribute The key attribute name to get
  * @param[out] value The value of the attribute
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -130,7 +130,7 @@ int metadata_extractor_get_metadata(metadata_extractor_h metadata, metadata_extr
 
 /**
  * @brief Gets the artwork image in a media file.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  *
  * @remarks You must release @a artwork and @a artwork_mime using @c free(). \n
  *                   In case of accessing specific path in internal storage or external storage, you may add the privilege for accessing the path. \n
@@ -140,7 +140,7 @@ int metadata_extractor_get_metadata(metadata_extractor_h metadata, metadata_extr
  * @param[out] artwork The encoded artwork image
  * @param[out] size The encoded artwork size
  * @param[out] mime_type The mime type of artwork
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -155,7 +155,7 @@ int metadata_extractor_get_artwork(metadata_extractor_h metadata, void **artwork
 
 /**
  * @brief Gets the frame of a video media file.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  *
  * @remarks You must release @a frame using @c free().
  *                   In case of accessing specific path in internal storage or external storage, you may add the privilege for accessing the path. \n
@@ -164,7 +164,7 @@ int metadata_extractor_get_artwork(metadata_extractor_h metadata, void **artwork
  * @param[in] metadata The handle to metadata
  * @param[out] frame The raw frame data in RGB888
  * @param[out] size The frame data size
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -179,7 +179,7 @@ int metadata_extractor_get_frame(metadata_extractor_h metadata, void **frame, in
 
 /**
  * @brief Gets the synclyrics of a media file.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  *
  * @remarks You must release @a lyrics using @c free().
  *                   In case of accessing specific path in internal storage or external storage, you may add the privilege for accessing the path. \n
@@ -189,7 +189,7 @@ int metadata_extractor_get_frame(metadata_extractor_h metadata, void **frame, in
  * @param[in] index The index of time/lyrics to set
  * @param[out] time_stamp The time information of the index
  * @param[out] lyrics The lyrics of the index
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter
@@ -204,7 +204,7 @@ int metadata_extractor_get_synclyrics(metadata_extractor_h metadata, int index, 
 
 /**
  * @brief Gets the frame of a video media.
- * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ * @since_tizen 2.3
  *
  * @remarks You must release @a frame using @c free().
  *                   In case of accessing specific path in internal storage or external storage, you may add the privilege for accessing the path. \n
@@ -216,7 +216,7 @@ int metadata_extractor_get_synclyrics(metadata_extractor_h metadata, int index, 
  *                        otherwise @c false if the user can only get the nearest i-frame of the video rapidly
  * @param[out] frame The raw frame data in RGB888
  * @param[out] size The frame data size
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #METADATA_EXTRACTOR_ERROR_NONE Successful
  * @retval #METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER Invalid parameter

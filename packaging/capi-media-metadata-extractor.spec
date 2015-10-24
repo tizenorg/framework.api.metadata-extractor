@@ -1,6 +1,6 @@
 Name:       capi-media-metadata-extractor
 Summary:    A media metadata extractor library in SLP C API
-Version: 0.1.12
+Version: 0.1.14
 Release:    1
 Group:      System/Libraries
 License:    Apache-2.0
@@ -17,7 +17,7 @@ A media metadata extractor  library in SLP C API
 
 %package devel
 Summary:  A media metadata extractor  library in SLP C API (Development)
-Group:    TO_BE/FILLED_IN
+Group:    Multimedia/Development
 Requires: %{name} = %{version}-%{release}
 
 %description devel
@@ -28,13 +28,11 @@ A media metadata extractor  library in SLP C API
 
 
 %build
-MAJORVER=`echo %{version} | awk 'BEGIN {FS="."}{print $1}'`
+export CFLAGS+=" -Wextra -Wno-array-bounds"
+export CFLAGS+=" -Wno-ignored-qualifiers -Wno-unused-parameter -Wshadow"
+export CFLAGS+=" -Wwrite-strings -Wswitch-default"
 
-%if 0%{?sec_build_binary_debug_enable}
-export CFLAGS="$CFLAGS -DTIZEN_DEBUG_ENABLE"
-export CXXFLAGS="$CXXFLAGS -DTIZEN_DEBUG_ENABLE"
-export FFLAGS="$FFLAGS -DTIZEN_DEBUG_ENABLE"
-%endif
+MAJORVER=`echo %{version} | awk 'BEGIN {FS="."}{print $1}'`
 
 cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFULLVER=%{version} -DMAJORVER=${MAJORVER}
 
@@ -52,7 +50,7 @@ cp -rf %{_builddir}/%{name}-%{version}/LICENSE.APLv2.0 %{buildroot}/%{_datadir}/
 
 
 %files
-%manifest capi-media-metadata-extractor.manifest
+%manifest %{name}.manifest
 %{_libdir}/libcapi-media-metadata-extractor.so
 %{_datadir}/license/%{name}
 

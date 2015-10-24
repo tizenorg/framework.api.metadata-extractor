@@ -32,31 +32,30 @@ extern "C" {
 #define LOG_TAG "CAPI_MEDIA_METADATA_EXTRACTOR"
 
 #define metadata_extractor_debug(fmt, arg...) do { \
-			LOGD(""fmt"", ##arg);     \
-		} while (0)
+		LOGD(""fmt"", ##arg);     \
+	} while (0)
 
 #define metadata_extractor_info(fmt, arg...) do { \
-			LOGI(""fmt"", ##arg);     \
-		} while (0)
+		LOGI(""fmt"", ##arg);     \
+	} while (0)
 
 #define metadata_extractor_error(fmt, arg...) do { \
-			LOGE(""fmt"", ##arg);     \
-		} while (0)
+		LOGE(""fmt"", ##arg);     \
+	} while (0)
 
 #define metadata_extractor_debug_fenter() do { \
-			LOGD("<Enter>");     \
-		} while (0)
+		LOGD("<Enter>");     \
+	} while (0)
 
 #define metadata_extractor_debug_fleave() do { \
-			LOGD("<Leave>");     \
-		} while (0)
+		LOGD("<Leave>");     \
+	} while (0)
 
 #define metadata_extractor_sucure_info(fmt, arg...) do { \
-			SECURE_LOGI(""fmt"", ##arg);     \
-		} while (0)
+		SECURE_LOGI(""fmt"", ##arg);     \
+	} while (0)
 
-typedef struct
-{
+typedef struct {
 	char *path;
 	void *buffer;
 	int buffer_size;
@@ -67,7 +66,7 @@ typedef struct
 
 	MMHandleType attr_h;
 	MMHandleType tag_h;
-}metadata_extractor_s;
+} metadata_extractor_s;
 
 #ifdef __cplusplus
 }

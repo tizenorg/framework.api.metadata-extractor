@@ -41,21 +41,21 @@ extern "C" {
  */
 typedef enum
 {
-    METADATA_EXTRACTOR_ERROR_NONE = TIZEN_ERROR_NONE,         /**< Successful */
-    METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER    = TIZEN_ERROR_INVALID_PARAMETER,         /**< Invalid parameter */
-    METADATA_EXTRACTOR_ERROR_OUT_OF_MEMORY = TIZEN_ERROR_OUT_OF_MEMORY,         /**< Out of memory */
-    METADATA_EXTRACTOR_ERROR_FILE_EXISTS = TIZEN_ERROR_FILE_EXISTS,         /**< File does not exist */
-    METADATA_EXTRACTOR_ERROR_PERMISSION_DENIED		= TIZEN_ERROR_PERMISSION_DENIED,			/**< Permission denied */
-    METADATA_EXTRACTOR_ERROR_OPERATION_FAILED = METADATA_EXTRACTOR_ERROR_CLASS |0x01,         /**< Invalid internal operation */
-} metadata_extractor_error_e;
+	METADATA_EXTRACTOR_ERROR_NONE = TIZEN_ERROR_NONE,         /**< Successful */
+	METADATA_EXTRACTOR_ERROR_INVALID_PARAMETER    = TIZEN_ERROR_INVALID_PARAMETER,         /**< Invalid parameter */
+	METADATA_EXTRACTOR_ERROR_OUT_OF_MEMORY = TIZEN_ERROR_OUT_OF_MEMORY,         /**< Out of memory */
+	METADATA_EXTRACTOR_ERROR_FILE_EXISTS = TIZEN_ERROR_FILE_EXISTS,         /**< File does not exist */
+	METADATA_EXTRACTOR_ERROR_PERMISSION_DENIED		= TIZEN_ERROR_PERMISSION_DENIED,			/**< Permission denied */
+	METADATA_EXTRACTOR_ERROR_OPERATION_FAILED = METADATA_EXTRACTOR_ERROR_CLASS | 0x01,        /**< Invalid internal operation */
+}
+    metadata_extractor_error_e;
 
 
 /**
  * @ingroup CAPI_METADATA_EXTRACTOR_MODULE
  * @brief Enumeration for attribute.
  */
-typedef enum
-{
+typedef enum {
 	METADATA_DURATION	= 0,			/**< Duration */
 	METADATA_VIDEO_BITRATE,			/**< Video Bitrate */
 	METADATA_VIDEO_FPS,				/**< Video FPS */
@@ -94,7 +94,7 @@ typedef enum
  * @ingroup CAPI_METADATA_EXTRACTOR_MODULE
  * @brief The metadata extractor handle.
  */
-typedef struct metadata_extractor_s* metadata_extractor_h;
+typedef struct metadata_extractor_s *metadata_extractor_h;
 
 /**
  * @}
